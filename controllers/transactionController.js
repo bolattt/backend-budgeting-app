@@ -19,14 +19,14 @@ app.post("/", (req, res) => {
   console.log(req.body);
   req.body.amount = Number(req.body.amount);
   transactions.push(req.body);
-  res.send(transactions[transactions.length - 1]);
+  res.json(transactions[transactions.length - 1]);
 });
 
 app.delete("/:index", (req, res) => {
   const { index } = req.params;
   if (transactions[index]) {
     transactions.splice(index, 1);
-    res.send(transactions);
+    res.json(transactions);
   } else {
     res.status(400).json({ error: "transaction not found at given index" });
   }
