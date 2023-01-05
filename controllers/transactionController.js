@@ -16,6 +16,8 @@ app.get("/:index", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  console.log(req.body);
+  req.body.amount = Number(req.body.amount);
   transactions.push(req.body);
   res.send(transactions[transactions.length - 1]);
 });
